@@ -499,8 +499,6 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
                         wait=cfg.craft_timeout):
         return fail("CRAFT window did not close — purchase unconfirmed")
 
-    x, y = _abs(engine.window, cfg.mouse_return)
-    engine.mouse.move_to(x, y)
     # From here the bait IS bought. However messy the exit turns out to be, the
     # purchase must still be credited: not doing so is what had the bot buying
     # over and over every few catches.
@@ -515,6 +513,8 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
     log(f"[shop] done — {bought} bait bought")
     return True
 
+     x, y = _abs(engine.window, cfg.mouse_return)
+    engine.mouse.move_to(x, y)
 
 def escape_dialogue(engine) -> bool:
     """Close an NPC dialogue we did not mean to open, and get back to fishing.
