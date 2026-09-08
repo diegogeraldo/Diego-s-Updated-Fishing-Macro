@@ -527,6 +527,7 @@ class Shop:
     craft_plus: tuple = (0.6365, 0.5407)    # (1222,558) '+' quantity
     craft_button: tuple = (0.5000, 0.6667)  # (960,688)  'Craft'
     craft_close: tuple = (0.6600, 0.2926)   # (1267,302) craft 'Close' (recovery)
+    mouse_return: tuple = (0.5000, 0.5000)
 
     # Where to look to confirm each step actually happened, as fractions of the
     # game window.
