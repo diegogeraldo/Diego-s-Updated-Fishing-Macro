@@ -520,7 +520,7 @@ class Shop:
     # of a button's top edge.
     center: tuple = (0.5000, 0.5107)        # (960,527) Interact / screen centre
     menu_item1: tuple = (0.7490, 0.5184)    # (1438,535) Shop->Buy Bait->Basic Bait
-    buy_bait: tuple = (0.7490, 0.5184)
+    basic_bait: tuple = (0.7490, 0.5184)
     menu_item2: tuple = (0.7490, 0.5717)    # (1438,590) second entry, e.g. 'Sell Fish'
     menu_last: tuple = (0.7490, 0.6880)     # (1438,710) 'Back' then 'Nevermind'
     craft_plus: tuple = (0.6365, 0.5407)    # (1222,558) '+' quantity
@@ -736,7 +736,7 @@ class Config:
         fields |= {f"dialog.learn_{s}" for s in boxes} | {"dialog.learn_click"}
         fields |= {f"shop.menu_{s}" for s in boxes}
         fields |= {f"shop.craft_btn_{s}" for s in boxes}
-        fields |= {f"shop.{k}" for k in ("npc", "bait_per_purchase", "center",
+        fields |= {f"shop.{k}" for k in ("npc", "bait_per_purchase", "center", "basic_bait", 
                                          "menu_item1", "menu_item2", "menu_last",
                                          "craft_plus", "craft_button", "craft_close")}
         fields |= {"sell.enabled", "sell.every", "chest.enabled",
