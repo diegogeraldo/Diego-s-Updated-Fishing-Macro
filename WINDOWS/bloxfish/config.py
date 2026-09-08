@@ -520,6 +520,7 @@ class Shop:
     # of a button's top edge.
     center: tuple = (0.5000, 0.5107)        # (960,527) Interact / screen centre
     menu_item1: tuple = (0.7490, 0.5184)    # (1438,535) Shop->Buy Bait->Basic Bait
+    buy_bait: tuple = (0.7490, 0.5184)
     basic_bait: tuple = (0.7490, 0.5184)
     menu_item2: tuple = (0.7490, 0.5717)    # (1438,590) second entry, e.g. 'Sell Fish'
     menu_last: tuple = (0.7490, 0.6880)     # (1438,710) 'Back' then 'Nevermind'
