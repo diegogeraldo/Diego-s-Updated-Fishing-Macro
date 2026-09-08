@@ -245,6 +245,8 @@ CALIB_GROUPS = [
         ("menu_item1", "dot", "shop", ("menu_item1",), "Top menu button",
          "Drop the dot on the TOP button in the stack. The bot presses it for "
          "“Shop”, “Buy Bait”, “Basic Bait” and “Confirm”.", "menu_item1"),
+        ("basic_bait", "dot", "shop", ("basic_bait",), "Basic Bait",
+         "Drop the dot in the middle of the “Basic Bait” button.", "basic_bait"),     
         ("menu_item2", "dot", "shop", ("menu_item2",), "2nd menu button",
          "Drop the dot on the SECOND button down. Used only for “Sell Fish”.",
          "menu_item2"),
