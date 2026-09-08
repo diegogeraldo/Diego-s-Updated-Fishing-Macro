@@ -505,6 +505,8 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
     if not leave_dialogue(engine):
         log("[shop] could not close the dialogue cleanly — carrying on")
 
+    x, y = _abs(engine.window, cfg.mouse_return)
+    engine.mouse.move_to(x, y)
     # Dismissing the dialogue locks the character briefly; moving during that
     # window silently goes nowhere.
     engine._sleep(cfg.after_nevermind)
@@ -512,9 +514,6 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
     enter_fishing_stance(engine)
     log(f"[shop] done — {bought} bait bought")
     return True
-
-     x, y = _abs(engine.window, cfg.mouse_return)
-    engine.mouse.move_to(x, y)
 
 def escape_dialogue(engine) -> bool:
     """Close an NPC dialogue we did not mean to open, and get back to fishing.
