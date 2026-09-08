@@ -271,6 +271,9 @@ CALIB_GROUPS = [
         ("craft_close", "dot", "shop", ("craft_close",), "“Close”",
          "Drop the dot on the red “Close” at the top-right of the craft window. "
          "Only used to back out if something goes wrong.", "craft_close"),
+        ("mouse_return", "dot", "shop", ("mouse_return",),
+        "Mouse Return Position", "Drop the dot where the mouse should return after leaving the NPC.",
+        "mouse_return"),
     ]),
 ]
 
