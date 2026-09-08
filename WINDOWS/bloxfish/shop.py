@@ -485,13 +485,19 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
     # Basic Bait
     click(cfg.basic_bait, cfg.after_click, "Basic Bait")
 
-    # Make sure the craft window actually opened
+    # Wait for the craft window to actually appear
     if not _wait_until(engine, lambda: craft_up(engine), cfg.craft_timeout):
         return fail("CRAFT window never opened")
 
     # Quantity: +10 each
     for _ in range(n_plus):
         click(cfg.craft_plus, cfg.after_plus)
+
+    # Click Craft and verify that the window closes
+    if not _click_until(engine, cfg.craft_button,
+                        lambda: not craft_up(engine), tries=4,
+                        wait=cfg.craft_timeout):
+        return fail("CRAFT window did not close — purchase unconfirmed")
         
     # From here the bait IS bought. However messy the exit turns out to be, the
     # purchase must still be credited: not doing so is what had the bot buying
