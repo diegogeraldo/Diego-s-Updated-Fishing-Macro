@@ -476,31 +476,23 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
                     "interaction range, or the menu box needs calibrating "
                     "(easy_run.py -> Calibrate controls -> shop.menu)")
 
-    # Shop -> Buy Bait -> Basic Bait are three clicks on the *same* spot, so
-    # instead of firing three and hoping, keep clicking until the craft window
-    # is genuinely up. Under lag a click can land before its button exists and
-    # do nothing; repeating is free and self-corrects.
-    if not _click_until(engine, cfg.menu_item1, lambda: craft_up(engine),
-                        tries=8, wait=cfg.after_click + 0.6):
-        return fail("CRAFT window never opened")
+        # Shop
+    click(cfg.menu_item1, cfg.after_click, "Shop")
 
-    for _ in range(n_plus):                  # quantity: +10 each
-        click(cfg.craft_plus, cfg.after_plus)
+    # Buy Bait
+    click(cfg.buy_bait, cfg.after_click, "Buy Bait")
 
-    # The craft window closing is the one unambiguous "the bait is bought"
-    # signal, so it gets the same treatment.
-    # Click Buy Bait
-    click(cfg.menu_item1, cfg.after_click, "Menu Item 1")
-    
-    click(cfg.menu_item1, cfg.after_click, "Buy Bait")
-    
-    # Click Basic Bait
+    # Basic Bait
     click(cfg.basic_bait, cfg.after_click, "Basic Bait")
-    
+
     # Make sure the craft window actually opened
-    if not craft_up(engine):
+    if not _wait_until(engine, lambda: craft_up(engine), cfg.craft_timeout):
         return fail("CRAFT window never opened")
 
+    # Quantity: +10 each
+    for _ in range(n_plus):
+        click(cfg.craft_plus, cfg.after_plus)
+        
     # From here the bait IS bought. However messy the exit turns out to be, the
     # purchase must still be credited: not doing so is what had the bot buying
     # over and over every few catches.
