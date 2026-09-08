@@ -490,6 +490,8 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
     # The craft window closing is the one unambiguous "the bait is bought"
     # signal, so it gets the same treatment.
     # Click Buy Bait
+    click(cfg.menu_item1, cfg.after_click, "Menu Item 1")
+    
     click(cfg.menu_item1, cfg.after_click, "Buy Bait")
     
     # Click Basic Bait
