@@ -498,7 +498,9 @@ def buy(engine, amount: int, first_time: bool = False) -> bool:
                         lambda: not craft_up(engine), tries=4,
                         wait=cfg.craft_timeout):
         return fail("CRAFT window did not close — purchase unconfirmed")
-        
+
+    x, y = _abs(engine.window, cfg.mouse_return)
+    engine.mouse.move_to(x, y)
     # From here the bait IS bought. However messy the exit turns out to be, the
     # purchase must still be credited: not doing so is what had the bot buying
     # over and over every few catches.
